@@ -92,15 +92,15 @@
           <div class="col-lg-8">
               {% for fresh_post in fresh_posts %}
                 <div class="single-recent-blog-post">
-                  <div class="thumb">
+                  <div class="thumb" >
                     {% if fresh_post.image_url %}
                       <img class="img-fluid" src={{ fresh_post.image_url }} alt="">
                     {% else %}
                       <img class="img-fluid" src={% static "img/banner/blog.png" %} alt="">
                     {% endif %}
-                        <ul class="thumb-info">
+                        <ul class="thumb-info" style="max-width: 550px;">
                           <li><a href="#"><i class="ti-user"></i>{{ fresh_post.author }}</a></li>
-                          <li><a href="#"><i class="ti-notepad"></i>{{ fresh_post.pablished_at }}</a></li>
+                          <li><a href="#"><i class="ti-notepad"></i>{{ fresh_post.published_at }}</a></li>
                           <li><a href="#"><i class="ti-themify-favicon"></i>{{ fresh_post.comments_amount }} Comments</a></li>
                         </ul>
                   </div>
