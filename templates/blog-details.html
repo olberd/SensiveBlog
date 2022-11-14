@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %} {{ post.title }} - Blog Details {% endblock %}
+
 {% block content %}
 
   <!--================ Hero sm Banner start =================-->
@@ -12,7 +13,7 @@
           <h1>Blog details</h1>
           <nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href={% url 'index' %}>Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
             </ol>
           </nav>
@@ -24,91 +25,64 @@
 
   <!--================ Start Blog Post Area =================-->
   <section class="blog-post-area section-margin">
-  <div class="container">
-  <div class="row">
-  <div class="col-lg-8">
-    <div class="main_blog_details">
-      <img class="img-fluid" src={% static "img/blog/blog4.png" %} alt="blog image">
-      <h4>{{ post.title }}</h4>
-      <div class="user_details">
-        <div class="mt-sm-0 mt-3">
-          <div class="media">
-            <div class="media-body">
-              <h5>{{ post.author }}</h5>
-              <p>{{ post.published_at }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p>{{ post.text }}</p>
-      <div class="news_d_footer flex-column flex-sm-row">
-        <a href="#"><span class="align-middle mr-2"><i class="ti-heart"
-                                                       style="color: red"></i></span>{{ post.likes_amount }}
-          people like this</a>
-        <a class="justify-content-sm-center ml-sm-auto mt-sm-0 mt-2" href="#"><span class="align-middle mr-2"><i
-                class="ti-themify-favicon"></i></span>{{ post.comments | length }} Comments</a>
-        <div class="news_socail ml-sm-auto mt-sm-0 mt-2">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-dribbble"></i></a>
-          <a href="#"><i class="fab fa-behance"></i></a>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="comments-area">
-      <h4>{{ post.comments | length }} Comments</h4>
-      {% for comment in post.comments %}
-        <div class="comment-list">
-          <div class="single-comment justify-content-between d-flex">
-            <div class="user justify-content-between d-flex">
-              <div class="desc">
-                <h5><a href="#">{{ comment.author }}r</a></h5>
-                <p class="date">{{ comment.published_at }}</p>
-                <p class="comment">
-                  {{ comment.text }}
-                </p>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="main_blog_details">
+            <img class="img-fluid" src={% static "img/blog/blog4.png" %} alt="blog_image">
+            <h4>{{ post.title }}</h4>
+            <div class="user_details">
+              <div class="mt-sm-0 mt-3">
+                <div class="media">
+                  <div class="media-body">
+                    <h5>{{ post.author }}</h5>
+                    <p>{{ post.published_at }}</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="reply-btn">
-              <a href="" class="btn-reply text-uppercase">reply</a>
+            <p>{{ post.text }}</p>
+            <div class="news_d_footer flex-column flex-sm-row">
+              <a href="#"><span class="align-middle mr-2"><i class="ti-heart"
+                                                             style="color: red"></i></span>{{ post.likes_amount }}
+                people like this</a>
+              <a class="justify-content-sm-center ml-sm-auto mt-sm-0 mt-2" href="#"><span class="align-middle mr-2"><i
+                      class="ti-themify-favicon"></i></span>{{ post.comments | length }} Comments</a>
+              <div class="news_socail ml-sm-auto mt-sm-0 mt-2">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+              </div>
             </div>
           </div>
-        </div>
-      {% endfor %}
-      <div class="comment-list">
-        <div class="single-comment justify-content-between d-flex">
-          <div class="user justify-content-between d-flex">
-            <div class="desc">
-              <h5><a href="#">Maria Luna</a></h5>
-              <p class="date">December 4, 2017 at 3:12 pm </p>
-              <p class="comment">
-                Never say goodbye till the end comes!
-              </p>
-            </div>
-          </div>
-          <div class="reply-btn">
-            <a href="" class="btn-reply text-uppercase">reply</a>
-          </div>
-        </div>
-      </div>
-      <div class="comment-list">
-        <div class="single-comment justify-content-between d-flex">
-          <div class="user justify-content-between d-flex">
-            <div class="desc">
-              <h5><a href="#">Ina Hayes</a></h5>
-              <p class="date">December 4, 2017 at 3:12 pm </p>
-              <p class="comment">
-                Never say goodbye till the end comes!
-              </p>
-            </div>
-          </div>
-          <div class="reply-btn">
-            <a href="" class="btn-reply text-uppercase">reply</a>
+
+
+          <div class="comments-area">
+            <h4>{{ post.comments | length }} Comments</h4>
+            {% for comment in post.comments %}
+              <div class="comment-list">
+                <div class="single-comment justify-content-between d-flex">
+                  <div class="user justify-content-between d-flex">
+                    <div class="desc">
+                      <h5><a href="#">{{ comment.author }}r</a></h5>
+                      <p class="date">{{ comment.published_at }}</p>
+                      <p class="comment">
+                        {{ comment.text }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="reply-btn">
+                    <a href="" class="btn-reply text-uppercase">reply</a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+
 {% endblock %}
+</div>
+</div>
+</section>
